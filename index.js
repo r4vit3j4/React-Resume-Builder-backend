@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth");
 const app = express();
 const connection = require("./db");
 const userRoutes = require("./routes/users");
+const renderRoutes = require("./routes/render");
 
 connection();
 
@@ -35,6 +36,10 @@ app.use(
 // routes
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/render", renderRoutes);
+app.get("/", (req, res) => {
+  res.send("Hello Friend");
+});
 
 const PORT = process.env.PORT || 5000;
 
